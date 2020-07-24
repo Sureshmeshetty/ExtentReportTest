@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: ExtentSparkReporterTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 7, Time elapsed: 1.086 sec <<< FAILURE!
+customReport(ExtentSparkReporterTest)  Time elapsed: 0.881 sec  <<< FAILURE!
+java.lang.NoSuchFieldError: VERSION_2_3_29
+	at com.aventstack.extentreports.reporter.BasicFileReporter.start(BasicFileReporter.java:98)
+	at com.aventstack.extentreports.ReportObservable.register(ReportObservable.java:192)
+	at java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:948)
+	at java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:580)
+	at com.aventstack.extentreports.ExtentReports.attachReporter(ExtentReports.java:82)
+	at ExtentSparkReporterTest.customReport(ExtentSparkReporterTest.java:68)
+
