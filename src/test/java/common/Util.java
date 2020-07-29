@@ -10,44 +10,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import com.relevantcodes.extentreports.LogStatus;
-
-public class Util extends BaseClass{
-	public static void logPassExtent(String message)
-	{
-		logger.log(LogStatus.PASS,message);
-	}
-	
-	public static void logInfoExtent(String message)
-	{
-		logger.log(LogStatus.INFO,message);
-	}
-	
-	public static void logPassExtent(String message,String title) throws IOException
-	{
-		
-		logPassExtent(message);
-		String screenshotPath = getScreenshot(driver, title);
-		logPassExtent(logger.addScreenCapture(screenshotPath));
-	}
-	
-	public static void logSkipExtent(String message)
-	{
-		logger.log(LogStatus.SKIP,message);
-	}
-	
-	public static void logFailExtent(String message)
-	{
-		logger.log(LogStatus.FAIL,message);
-	}
-	
-	public static void logFailExtent(String message,String title) throws IOException
-	{
-		logFailExtent(message);
-		String screenshotPath = getScreenshot(driver, title);
-		logFailExtent(logger.addScreenCapture(screenshotPath));
-	}
-
+public class Util{
 	public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException{
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 		TakesScreenshot ts = (TakesScreenshot) driver;

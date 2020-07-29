@@ -1,6 +1,5 @@
 package testSuite;
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
@@ -9,8 +8,8 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import common.BaseClass;
+import common.ExtentLogging;
 import common.ListenersClass;
-import common.Util;
 
 @Listeners(ListenersClass.class)
 public class StringReverse  extends BaseClass {
@@ -19,7 +18,7 @@ public class StringReverse  extends BaseClass {
 	@Test
 	public void usingReverse()
 	{
-		Util.logInfoExtent("This is String Reverse \"Using Reverse\" method");
+		ExtentLogging.logInfoExtent("This is String Reverse \"Using Reverse\" method");
 		String s = "Geeks For Geeks";
 		StringBuilder sb = new StringBuilder();
 		sb.append(s);
@@ -29,7 +28,7 @@ public class StringReverse  extends BaseClass {
 	@Test
 	public void usingCharArray()
 	{
-		Util.logInfoExtent("This is String Reverse \"Using Character Array\" method");
+		ExtentLogging.logInfoExtent("This is String Reverse \"Using Character Array\" method");
 		String s = "Geeks For Geeks";
 		char[] chars = s.toCharArray();
 		for(int i=chars.length-1;i>=0;i--)
@@ -40,7 +39,7 @@ public class StringReverse  extends BaseClass {
 	@Test
 	public void usingArrayList()
 	{
-		Util.logInfoExtent("This is String Reverse \"Using Array List\" method");
+		ExtentLogging.logInfoExtent("This is String Reverse \"Using Array List\" method");
 		String s = "Geeks For Geeks";
 		char[] chars = s.toCharArray();
 		List<Character> charArray = new ArrayList<Character>();
@@ -58,7 +57,7 @@ public class StringReverse  extends BaseClass {
 	@Test
 	public void recursiveTest()
 	{
-		Util.logInfoExtent("This is String Reverse \"Using Recursive\" method");
+		ExtentLogging.logInfoExtent("This is String Reverse \"Using Recursive\" method");
 		String s = "Geeks For Geeks";
 		System.out.println(usingRecursive(s));
 	}

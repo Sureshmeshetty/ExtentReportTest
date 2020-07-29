@@ -11,18 +11,18 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import common.BaseClass;
+import common.ExtentLogging;
 import common.ListenersClass;
-import common.Util;
 
 @Listeners(ListenersClass.class)
 public class ExtendReportTest extends BaseClass {
 
 	@Test
 	public void passTest() {
-		Util.logPassExtent("This is My Test case");
+		ExtentLogging.logPassExtent("This is My Test case");
 		Assert.assertTrue(true);
 		// To generate the log when the test case is passed
-		Util.logPassExtent("Test Case Passed is passTest");
+		ExtentLogging.logPassExtent("Test Case Passed is passTest");
 	}
 
 	/**
@@ -32,11 +32,11 @@ public class ExtendReportTest extends BaseClass {
 	 */
 	@Test
 	public void failTest() {
-		Util.logPassExtent("Chrome Driver is launched");
+		ExtentLogging.logPassExtent("Chrome Driver is launched");
 		driver.get("https://chromedriver.chromium.org/downloads");
 		String currentURL = driver.getTitle();
 		Assert.assertEquals(currentURL, "NoTitle");
-		Util.logPassExtent("Test Case (failTest) Status is passed");
+		ExtentLogging.logPassExtent("Test Case (failTest) Status is passed");
 	}
 
 	@Test
@@ -53,6 +53,6 @@ public class ExtendReportTest extends BaseClass {
 		Select select = new Select(selectList);
 		select.selectByVisibleText("Maruti");
 		select.selectByVisibleText("Honda");
-		Util.logPassExtent("Multi Selection", "Multi_Selection");
+		ExtentLogging.logPassExtent("Multi Selection", "Multi_Selection");
 	}
 }
