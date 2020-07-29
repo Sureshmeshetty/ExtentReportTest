@@ -33,7 +33,7 @@ public class ExtendReportTest extends BaseClass {
 	@Test
 	public void failTest() {
 		ExtentLogging.logPassExtent("Chrome Driver is launched");
-		driver.get("https://chromedriver.chromium.org/downloads");
+		driver.get(_prop.getPropValue("APP_URL"));
 		String currentURL = driver.getTitle();
 		Assert.assertEquals(currentURL, "NoTitle");
 		ExtentLogging.logPassExtent("Test Case (failTest) Status is passed");
@@ -45,8 +45,7 @@ public class ExtendReportTest extends BaseClass {
 	}
 
 	@Test
-	public void testApp() throws Exception {
-
+	public void testApp() {
 		driver.navigate().to("http://automate-apps.com/select-multiple-options-from-a-drop-down-list/");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		WebElement selectList = driver.findElement(By.xpath("//select[@name='cars']"));

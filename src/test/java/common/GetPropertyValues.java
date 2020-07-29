@@ -8,12 +8,12 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-public class GetPropertyValues {
+public class GetPropertyValues extends BaseClass{
 
 	public String propFileName = null;
 	Properties prop = new Properties();
 
-	public String getPropValues(String key) {
+	public String getPropValue(String key) {
 		try {
 			if (key != null) {
 				propFileName = "testing.properties";
@@ -24,12 +24,10 @@ public class GetPropertyValues {
 				prop.load(inputStream);
 				return prop.getProperty(key);
 			} else {
-				// Util.infoBox("One of the config parameter/property is given
-				// null","Config Error");
+				ExtentLogging.logFailExtent("Config Error: One of the config parameter/property is given null");
 			}
 		} catch (Exception e) {
-			// Util.infoBox("Check the given Config property values - Either the
-			// key doesn't exist or mistyped","Config Error");
+			ExtentLogging.logFailExtent("Config Error: Check the given Config property values - Either the key doesn't exist or mistyped");
 			System.exit(0);
 		}
 		prop.clear();
@@ -57,6 +55,7 @@ public class GetPropertyValues {
 	
 	public Map<String,String> getAllKeyValues()
 	{
+		
 		try {
 			propFileName = "testing.properties";
 			InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);

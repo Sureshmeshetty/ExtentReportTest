@@ -17,7 +17,7 @@ public class PropertiesTest extends BaseClass {
 	@Test
 	public void printOnlyValues() {
 		List<String> keys= prop.getAllKeys();
-		keys.forEach(value -> 	ExtentLogging.logPassExtent(prop.getPropValues(value)));
+		keys.forEach(value -> 	ExtentLogging.logPassExtent(prop.getPropValue(value)));
 	}
 	
 	@Test

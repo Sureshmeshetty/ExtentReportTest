@@ -1,11 +1,14 @@
 .idea
-target/*
 *.iml
-reports/*
-log/*
-/target/
 .project
 .settings*
+reports/*
+log/*
+target/*
+AutomationReport/*
+FailedTestsScreenshots/*
+test-output/*
+target/*.*
 
 .classpath
 .DS_Store

@@ -16,11 +16,15 @@ public class ExtentLogging extends BaseClass {
 		logger.log(LogStatus.INFO,message);
 	}
 	
-	public static void logPassExtent(String message,String title) throws IOException
+	public static void logPassExtent(String message,String title)
 	{
-		
 		logPassExtent(message);
-		String screenshotPath = Util.getScreenshot(driver, title);
+		String screenshotPath = null;
+		try {
+			screenshotPath = Util.getScreenshot(driver, title);
+		} catch (IOException e) {
+			logFailExtent("Unable to Capture Screenshot");
+		}
 		logPassExtent(logger.addScreenCapture(screenshotPath));
 	}
 	
@@ -34,10 +38,15 @@ public class ExtentLogging extends BaseClass {
 		logger.log(LogStatus.FAIL,message);
 	}
 	
-	public static void logFailExtent(String message,String title) throws IOException
+	public static void logFailExtent(String message,String title)
 	{
 		logFailExtent(message);
-		String screenshotPath = Util.getScreenshot(driver, title);
+		String screenshotPath = null;
+		try {
+			screenshotPath = Util.getScreenshot(driver, title);
+		} catch (IOException e) {
+			logFailExtent("Unable to Capture Screenshot");
+		}
 		logFailExtent(logger.addScreenCapture(screenshotPath));
 	}
 

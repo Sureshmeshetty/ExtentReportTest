@@ -17,6 +17,8 @@ public class BaseClass {
 	public static WebDriver driver;
 	public static ExtentReports extent;
 	public static ExtentTest logger;
+	public static GetPropertyValues _prop = new GetPropertyValues();
+	//public static String methodName = null;
 	
 	/**
 	 * <b>ExtentReports(String filePath,Boolean replaceExisting)</b> </br>
@@ -41,7 +43,7 @@ public class BaseClass {
 		extent.loadConfig(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\extent-config.xml"));
 		
 		driver = InitializeDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Integer.parseInt(_prop.getPropValue("SHORT_WAIT")), TimeUnit.SECONDS);
 	}
 	
 	/**
@@ -54,14 +56,27 @@ public class BaseClass {
 	 */
 	
 	public WebDriver InitializeDriver() {
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-
-		options.addArguments("start-maximized");
-		//options.addArguments("--headless");
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.silentOutput", "true");
-		return new ChromeDriver(options);
+		String browserName = _prop.getPropValue("BROWSER_NAME");
+		if(browserName.equals("Chrome"))
+		{
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+			options.addArguments("start-maximized");
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.silentOutput", "true");
+			driver =  new ChromeDriver(options);
+		}
+		else if(browserName.equals("FireFox")) {
+			
+		}
+		else if(browserName.equals("IE")) {
+			
+		}
+		else if(browserName.equals("Opera")) {
+			
+		}
+		
+		return driver;
 	}
 	
 	@AfterMethod

@@ -1,6 +1,4 @@
 package common;
-import java.io.IOException;
-
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -8,24 +6,20 @@ import org.testng.ITestResult;
 public class ListenersClass extends BaseClass implements ITestListener {
 	public void onTestStart(ITestResult result) {
 		logger = extent.startTest(result.getName());
+		ExtentLogging.logPassExtent("\""+result.getName()+"\" Testcase is Started");
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		ExtentLogging.logPassExtent(result.getName()+" Test Ended");
+		ExtentLogging.logPassExtent("<b><span style='color:blue;'>\""+result.getName()+"\"</span></b> Testcase is Ended");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		try {
-			ExtentLogging.logFailExtent("Test Case Failed is "+result.getName());
-			ExtentLogging.logFailExtent("Test Case Failed is "+result.getThrowable().getMessage(),result.getName());
-		}
-		catch (IOException e) {
-			ExtentLogging.logFailExtent("Unable to capture the Screenshot");
-		}
+		ExtentLogging.logFailExtent(result.getThrowable().getMessage(),result.getName());
+		ExtentLogging.logFailExtent("Testcase Failed: <b><span style='color:red;'>\""+result.getName()+"\"</span></b>");
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		ExtentLogging.logSkipExtent("Test Case Skipped is "+result.getName());
+		ExtentLogging.logSkipExtent("Testcase Skipped: <b><span style='color:orange;'>\""+result.getName()+"\"</span></b>");
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
